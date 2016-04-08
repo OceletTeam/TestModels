@@ -1,0 +1,5 @@
+# General git ignore rules
+
+bin/
+src/
+.classpath

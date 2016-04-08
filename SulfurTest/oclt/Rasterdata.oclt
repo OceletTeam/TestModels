@@ -1,0 +1,30 @@
+
+relation HexaMnt<HexaCell hc, MntCell mc> {
+
+	interaction setMnt() {
+		hc.altitude = mc.altitude
+	} agg{
+		hc.mnt << Mean
+	}
+}
+
+relation HexaHexa<HexaCell hc1, HexaCell hc2>{
+	
+}
+
+entity HexaCell {
+	property Cell hcel
+	property Double altitude
+}
+
+entity MntCell{
+	property Cell cell
+	property Double altitude
+}
+
+datafacer Mnt{
+	data RasterFile("data/raster_mnt.tif")
+	match MntCell{
+		altitude : "0"
+	}
+}

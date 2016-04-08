@@ -1,0 +1,11 @@
+entity Extent{	
+	property MultiPolygon mp
+}
+
+
+datafacer Perimetre{
+	data Shapefile("data/extentZone.shp","EPSG:32740")
+	match Extent{
+		mp : ""
+	}
+}
