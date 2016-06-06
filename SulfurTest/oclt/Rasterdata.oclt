@@ -4,7 +4,7 @@ relation HexaMnt<HexaCell hc, MntCell mc> {
 	interaction setMnt() {
 		hc.altitude = mc.altitude
 	} agg{
-		hc.mnt << Mean
+		hc.altitude << Mean
 	}
 }
 

@@ -14,7 +14,7 @@ scenario SulfurTest {
   
   rel_hexahexa.createHexagons(perimetre, resolution)
   
-  rel_hexamnt.setGrid(rel_hexahexa.grid, dat_mnt.readAllMntCell(perimetre))
+  rel_hexamnt.connect(rel_hexahexa.grid, dat_mnt.readAllMntCell(perimetre))
   rel_hexamnt.setMnt
   
   println("Model SulfurTest done.")
