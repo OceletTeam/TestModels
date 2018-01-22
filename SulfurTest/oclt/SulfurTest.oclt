@@ -7,19 +7,34 @@ scenario SulfurTest {
   fix perimetre = new Perimetre
   fix dat_mnt = new Mnt
  
-  println("Build the square cells raster")
-  fix rel_srastrast = new RastRast
-  rel_srastrast.createSquares(perimetre, resolution, resolution)
-  test_RastRast(rel_srastrast,"square",dat_mnt.readAllMntCell(perimetre))
+  test_extZone(dat_mnt,perimetre,resolution)
+  
+  perimetre.fileName = "data/extentZone_lg.shp"
+  test_extZone(dat_mnt,perimetre,resolution)
+  
+  perimetre.fileName = "data/extentZone_cr.shp"
+  test_extZone(dat_mnt,perimetre,resolution)
 
-  println("Build the hexagonal cells raster")
-  fix rel_hrastrast = new RastRast
-  rel_hrastrast.createHexagons(perimetre, resolution)
-  test_RastRast(rel_hrastrast,"hexagonal",dat_mnt.readAllMntCell(perimetre))
-
+  perimetre.fileName = "data/extentZone_sm.shp"
+  test_extZone(dat_mnt,perimetre,resolution)
 
   println("Model SulfurTest done.")
 }
+
+scenario test_extZone(Mnt dat_mnt,Perimetre p, Double res) {
+  println("\n=== Test on extent : "+p.name+" ===")
+  println("Build the square cells raster")
+  fix rel_srastrast = new RastRast
+  rel_srastrast.createSquares(p,res,res)
+  test_RastRast(rel_srastrast,"square",dat_mnt.readAllMntCell(p))
+
+  println("Build the hexagonal cells raster")
+  fix rel_hrastrast = new RastRast
+  rel_hrastrast.createHexagons(p,res)
+  test_RastRast(rel_hrastrast,"hexagonal",dat_mnt.readAllMntCell(p))
+  println("----------------------------\n")
+}
+
 
 scenario test_RastRast(RastRast rr, String rasterLabel, List<MntCell> lMntCell) {
   println("  Raster ("+rasterLabel+") size : "+rr.width+" X "+rr.height)
