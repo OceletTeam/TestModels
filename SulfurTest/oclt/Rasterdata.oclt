@@ -1,18 +1,18 @@
 
-relation HexaMnt<HexaCell hc, MntCell mc> {
+relation RastMnt<RastCell rc, MntCell mc> {
 
 	interaction setMnt() {
-		hc.altitude = mc.altitude
+		rc.altitude = mc.altitude
 	} agg{
-		hc.altitude << Mean
+		rc.altitude << Mean
 	}
 }
 
-relation HexaHexa<HexaCell hc1, HexaCell hc2>{
+relation RastRast<RastCell hc1, RastCell hc2>{
 	
 }
 
-entity HexaCell {
+entity RastCell {
 	property Cell hcel
 	property Double altitude
 }
