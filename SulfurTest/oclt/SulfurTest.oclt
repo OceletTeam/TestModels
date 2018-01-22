@@ -6,7 +6,7 @@ scenario SulfurTest {
 
   fix perimetre = new Perimetre
   fix dat_mnt = new Mnt
-  
+ 
   println("Building the hexacells graph")
   
   fix rel_hexamnt = new HexaMnt
@@ -14,7 +14,7 @@ scenario SulfurTest {
   
   rel_hexahexa.createHexagons(perimetre, resolution)
   
-  rel_hexamnt.connect(rel_hexahexa.grid, dat_mnt.readAllMntCell(perimetre))
+  rel_hexamnt.connect(rel_hexahexa.hexaCells, dat_mnt.readAllMntCell(perimetre))
   rel_hexamnt.setMnt
   
   println("Model SulfurTest done.")
